@@ -4,7 +4,8 @@ namespace Remote.Api.Request;
 
 public static class RequestListUtils
 {
-    public static async Task<IResponse<ICollection<TElement>, TError>> ExecuteListAsync<TList, TElement, TError>(this IApiClient<TError> client,
+    public static async Task<IResponse<ICollection<TElement>, TError>> ExecuteListAsync<TList, TElement, TError>(
+        this IApiClient<TError> client,
         IRequestOffsetList<TList, TElement> request,
         CancellationToken cancellationToken)
         where TList : IElementOffsetList<TElement>
@@ -59,7 +60,8 @@ public static class RequestListUtils
 
         return IResponse<ICollection<TElement>, TError>.CreateSuccess(elements, System.Net.HttpStatusCode.OK);
     }
-    public static async Task<IResponse<ICollection<TElement>, TError>> ExecuteListAsync<TList, TElement, TError>(this IApiClient<TError> client,
+    public static async Task<IResponse<ICollection<TElement>, TError>> ExecuteListAsync<TList, TElement, TError>(
+        this IApiClient<TError> client,
         IRequestPaginationList<TList, TElement> request,
         CancellationToken cancellationToken)
         where TList : IElementPaginationList<TElement>
@@ -94,12 +96,14 @@ public static class RequestListUtils
         return IResponse<ICollection<TElement>, TError>.CreateSuccess(elements, System.Net.HttpStatusCode.OK);
     }
 
-    public static async Task<IResponse<ICollection<TElement>>> ExecuteListAsync<TList, TElement>(this IApiClient<IError> client,
+    public static async Task<IResponse<ICollection<TElement>>> ExecuteListAsync<TList, TElement>(
+        this IApiClient<IError> client,
         IRequestOffsetList<TList, TElement> request,
         CancellationToken cancellationToken)
         where TList : IElementOffsetList<TElement>
         => await client.ExecuteListAsync<TList, TElement, IError>(request, cancellationToken);
-    public static async Task<IResponse<ICollection<TElement>>> ExecuteListAsync<TList, TElement>(this IApiClient<IError> client,
+    public static async Task<IResponse<ICollection<TElement>>> ExecuteListAsync<TList, TElement>(
+        this IApiClient<IError> client,
         IRequestPaginationList<TList, TElement> request,
         CancellationToken cancellationToken)
         where TList : IElementPaginationList<TElement>
