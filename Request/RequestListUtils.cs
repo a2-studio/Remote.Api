@@ -7,7 +7,7 @@ public static class RequestListUtils
     public static async Task<IResponse<ICollection<TElement>, TError>> ExecuteListAsync<TList, TElement, TError>(
         this IApiClient<TError> client,
         IRequestOffsetList<TList, TElement> request,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken = default)
         where TList : IElementOffsetList<TElement>
         where TError : IError
     {
@@ -63,7 +63,7 @@ public static class RequestListUtils
     public static async Task<IResponse<ICollection<TElement>, TError>> ExecuteListAsync<TList, TElement, TError>(
         this IApiClient<TError> client,
         IRequestPaginationList<TList, TElement> request,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken = default)
         where TList : IElementPaginationList<TElement>
         where TError : IError
     {
@@ -99,13 +99,13 @@ public static class RequestListUtils
     public static async Task<IResponse<ICollection<TElement>>> ExecuteListAsync<TList, TElement>(
         this IApiClient<IError> client,
         IRequestOffsetList<TList, TElement> request,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken = default)
         where TList : IElementOffsetList<TElement>
         => await client.ExecuteListAsync<TList, TElement, IError>(request, cancellationToken);
     public static async Task<IResponse<ICollection<TElement>>> ExecuteListAsync<TList, TElement>(
         this IApiClient<IError> client,
         IRequestPaginationList<TList, TElement> request,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken = default)
         where TList : IElementPaginationList<TElement>
         => await client.ExecuteListAsync<TList, TElement, IError>(request, cancellationToken);
 }
